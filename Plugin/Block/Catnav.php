@@ -50,7 +50,7 @@ class Catnav
         return [
             'name' => __($name),
             'id' => $id,
-            'url' => $baseUrl . $path,
+            'url' => $path,
             'has_active' => false,
             'is_active' => $this->isActive($baseUrl)
         ];
