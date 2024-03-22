@@ -69,6 +69,8 @@ class Catnav
             case "https://entitybeauty.com/":
                 $activeUrls = 'https://entitybeauty.com/blog';
                 break;
+            default:
+                break;
         }
 
         if (strpos($currentUrl, $activeUrls) !== false) {
