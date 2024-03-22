@@ -36,16 +36,14 @@ class Catnav
 
         switch ($baseUrl) {
             case "https://gelishmorgantaylor.co.uk/":
-                $name = "";
-                $id = "";
-                $url = "";
-                $path = "";
+                $name = "Education";
+                $id = "education-site-link";
+                $path = $this->urlInterface->getUrl('https://gelishmorgantaylor.education');;
                 break;
             case "https://entitybeauty.com/":
-                $name = "";
-                $id = "";
-                $url = "";
-                $path = "";
+                $name = "Blog";
+                $id = "entity-blog-link";
+                $path = $this->urlInterface->getUrl('https://entitybeauty.com/blog');
                 break;
         };
 
