@@ -3,15 +3,18 @@
 namespace Nailalliance\AddCategoryLink\Plugin\Block;
 
 use Magento\Framework\Data\Tree\NodeFactory;
+use Magento\Store\Model\StoreManagerInterface;
 
 class Catnav
 {
     public function __construct(
         NodeFactory $nodeFactory,
-        \Magento\Framework\UrlInterface $urlInterface
+        \Magento\Framework\UrlInterface $urlInterface,
+        StoreManagerInterface $storeManager
     ) {
         $this->nodeFactory = $nodeFactory;
         $this->urlInterface = $urlInterface;
+        $this->storeManager = $storeManager;
     }
 
     public function beforeGetHtml(
@@ -20,14 +23,20 @@ class Catnav
         $childrenWrapClass = '',
         $limit = 0
     ) {
-        $node = $this->nodeFactory->create(
-            [
-                'data' => $this->getNodeAsArray(),
-                'idField' => 'id',
-                'tree' => $subject->getMenu()->getTree()
-            ]
-        );
-        $subject->getMenu()->addChild($node);
+        $storeCode = $this->storeManager->getStore()->getCode();
+        // $storeId = $this->storeManager->getStore()->getId(); // Alternatively, use store ID
+        $allowedStores = ['entitybeautystore', 'gelishmorgantaylorstore']; // Replace with your actual store codes
+
+        if (in_array($storeCode, $allowedStores)) {
+            $node = $this->nodeFactory->create(
+                [
+                    'data' => $this->getNodeAsArray(),
+                    'idField' => 'id',
+                    'tree' => $subject->getMenu()->getTree()
+                ]
+            );
+            $subject->getMenu()->addChild($node);
+        }
     }
 
     public function getNodeAsArray()
@@ -38,12 +47,12 @@ class Catnav
             case "https://gelishmorgantaylor.co.uk/":
                 $name = "Education";
                 $id = "education-site-link";
-                $path = $this->urlInterface->getUrl('https://gelishmorgantaylor.education');;
+                $path = 'https://gelishmorgantaylor.education';
                 break;
             case "https://entitybeauty.com/":
                 $name = "Blog";
                 $id = "entity-blog-link";
-                $path = $this->urlInterface->getUrl('https://entitybeauty.com/blog');
+                $path = 'https://entitybeauty.com/blog';
                 break;
         };
 
