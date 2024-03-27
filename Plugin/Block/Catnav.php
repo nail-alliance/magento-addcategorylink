@@ -25,7 +25,7 @@ class Catnav
     ) {
         $storeCode = $this->storeManager->getStore()->getCode();
         // $storeId = $this->storeManager->getStore()->getId(); // Alternatively, use store ID
-        $allowedStores = ['entitybeautystore', 'gelishmorgantaylorstore']; // Replace with your actual store codes
+        $allowedStores = ['entitybeautyview', 'gelishmorgantaylorview'];
 
         if (in_array($storeCode, $allowedStores)) {
             $node = $this->nodeFactory->create(
