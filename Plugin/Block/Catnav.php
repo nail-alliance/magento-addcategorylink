@@ -25,7 +25,7 @@ class Catnav
     ) {
         $storeCode = $this->storeManager->getStore()->getCode();
         // $storeId = $this->storeManager->getStore()->getId(); // Alternatively, use store ID
-        $allowedStores = ['entitybeautyview', 'gelishmorgantaylorview'];
+        $allowedStores = ['entitybeautyview', 'gelishmorgantaylorview', 'default'];
 
         if (in_array($storeCode, $allowedStores)) {
             $node = $this->nodeFactory->create(
@@ -54,6 +54,13 @@ class Catnav
                 $id = "entity-blog-link";
                 $path = 'https://entitybeauty.com/blog';
                 break;
+            case "https://entitybeauty.co.uk/":
+                $name = "Blog";
+                $id = "entity-blog-link";
+                $path = 'https://entitybeauty.co.uk/blog';
+                break;
+            default:
+                return false;
         };
 
         return [
