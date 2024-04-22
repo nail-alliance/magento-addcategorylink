@@ -59,8 +59,6 @@ class Catnav
                 $id = "entity-blog-link";
                 $path = 'https://entitybeauty.co.uk/blog';
                 break;
-            default:
-                return false;
         };
 
         return [
