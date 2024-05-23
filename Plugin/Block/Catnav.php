@@ -69,7 +69,7 @@ class Catnav
                     'is_active' => $this->isActive('https://entitybeauty.com/blog')
                 ];
                 $nodes[] = [
-                    'name' => __('Warranty Registration'),
+                    'name' => __('Register LED Light'),
                     'id' => 'warranty-link',
                     'url' => 'https://entitybeauty.com/warrantyregistration',
                     'has_active' => false,
@@ -85,7 +85,7 @@ class Catnav
                     'is_active' => $this->isActive('https://entitybeauty.co.uk/blog')
                 ];
                 $nodes[] = [
-                    'name' => __('Warranty Registration'),
+                    'name' => __('Register LED Light'),
                     'id' => 'warranty-link',
                     'url' => 'https://entitybeauty.co.uk/warrantyregistration',
                     'has_active' => false,
@@ -103,3 +103,4 @@ class Catnav
         return strpos($currentUrl, $nodeUrl) !== false;
     }
 }
+
